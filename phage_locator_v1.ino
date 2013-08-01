@@ -113,9 +113,11 @@ uint8_t buttonLoop() {
     last_friends = current_friends;
     current_friends = 1;
     
-    if( avg_value > 80 )  // we have an extra 4 friends if the music is loud! medium-loud music averages around 64
-      last_friends = last_friends + 4;
-
+//    if( avg_value > 80 )  // we have an extra 4 friends if the music is loud! medium-loud music averages around 64
+//      last_friends = last_friends + 4;
+    int excitement = map( avg_value, 0, 32, 0, 4 );
+    last_friends = last_friends + excitement;
+    
     if( last_friends > 10 )
       last_friends = 10;  // just range check this
   }
